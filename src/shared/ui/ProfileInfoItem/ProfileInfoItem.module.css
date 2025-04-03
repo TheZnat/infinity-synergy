@@ -1,0 +1,22 @@
+
+
+.profile-info__item {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.profile-info__item__text {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0%;
+  text-align: left;
+  width: 98px;
+}
+
+.profile-info__item__input {
+  width: 507px;
+  height: 28px;
+  padding: 2px;
+}

@@ -1,11 +1,13 @@
-import React from "react";
+import styles from "./HomePage.module.css";
+import ListUsers from "../../widgets/ListUsers/ListUsers";
+import InfoUser from "../../widgets/InfoUser/InfoUser";
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Welcome to Home Page</h1>
-      <p>This is the Home Page component.</p>
-    </div>
+    <main className={styles["home-page"]}>
+      <ListUsers />
+      <InfoUser />
+    </main>
   );
 };
 

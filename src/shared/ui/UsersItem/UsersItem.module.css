@@ -1,0 +1,25 @@
+.users-item {
+  display: flex;
+  width: 100%;
+  gap: 14px;
+  align-items: center;
+  padding-left: 10px;
+  height: 32px;
+  cursor: pointer;
+}
+.users-item:hover {
+  background-color: var(--Active-hover);
+}
+.users-item__avatar {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.users-item__name {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+}
