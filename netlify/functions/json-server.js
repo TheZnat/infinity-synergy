@@ -1,9 +1,8 @@
-// netlify/functions/json-server.js
 import jsonServer from "json-server";
 import path from "path";
 
 const server = jsonServer.create();
-const router = jsonServer.router(path.join(__dirname, "../../db.json"));
+const router = jsonServer.router(path.join(process.cwd(), "db.json")); 
 const middlewares = jsonServer.defaults();
 
 // Настройка CORS заголовков

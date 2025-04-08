@@ -1,0 +1,8 @@
+[build]
+  functions = "netlify/functions"  # Папка, где находятся серверные функции
+  publish = "public"               # Папка для публикации статических файлов
+
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
