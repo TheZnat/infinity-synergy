@@ -1,6 +1,6 @@
 [build]
-  functions = "netlify/functions" 
-  publish = "public"               
+  publish = "dist"  # Папка, в которой будет располагаться финальная сборка
+  functions = "netlify/functions"  # Папка, где хранятся серверные функции
 
 [[redirects]]
   from = "/api/*"
