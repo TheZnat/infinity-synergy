@@ -1,56 +1,61 @@
-"use client";
-
 import styles from "./InfoUser.module.css";
 import DefaultAvatar from "../../shared/assets/profile-icon.svg";
 import { AppDispatch, RootState } from "../../app/Store/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProfileInfoItem from "../../shared/ui/ProfileInfoItem/ProfileInfoItem";
-import { useRef, useState, useEffect } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useEffect, useState } from "react";
 import { updateEmployee } from "../../app/entities/employee/model/thunks";
-
-const updateEmployeeAction = async (prevState: any, formData: FormData) => {
-  "use server";
-  const employeeId = formData.get("employeeId") as string;
-  const updatedData = {
-    name: formData.get("name") as string,
-    department: formData.get("department") as string,
-    company: formData.get("company") as string,
-    jobTitle: formData.get("jobTitle") as string,
-  };
-
-  if (!employeeId) return { error: "Не выбран сотрудник" };
-
-  // Симуляция обновления через Redux
-  const dispatch: AppDispatch = (await import("../../app/Store/store")).store
-    .dispatch;
-  dispatch(updateEmployee({ employeeId, updatedData }));
-
-  return { success: "Данные обновлены!" };
-};
+import { useActionState } from "react";
 
 const InfoUser = () => {
   const { data, selectedUserId } = useSelector(
     (state: RootState) => state.data
   );
+  const dispatch = useDispatch<AppDispatch>();
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  const formRef = useRef<HTMLFormElement>(null);
   const dataUser = data.find((user) => user.id === selectedUserId);
-  const [formState, formAction] = useFormState(updateEmployeeAction, null);
 
-  // Добавляем состояние для отображения успешного сообщения
-  const [isSuccessVisible, setSuccessVisible] = useState(false);
+  const [dataForm, setDataForm] = useState({
+    name: "",
+    department: "",
+    company: "",
+    jobTitle: "",
+  });
 
   useEffect(() => {
-    if (formState?.success) {
-      setSuccessVisible(true);
-      const timer = setTimeout(() => {
-        setSuccessVisible(false);
-      }, 3000);
-
-      return () => clearTimeout(timer); // Очистка таймера при размонтировании
+    if (dataUser) {
+      setDataForm({
+        name: dataUser.name || "",
+        department: dataUser.department || "",
+        company: dataUser.company || "",
+        jobTitle: dataUser.jobTitle || "",
+      });
     }
-  }, [formState?.success]);
+  }, [JSON.stringify(dataUser)]);
+
+  // Исправляем handleFormAction (удаляем unused state)
+  const handleFormAction = async () => {
+    const updatedData = {
+      name: dataForm.name,
+      jobTitle: dataForm.jobTitle,
+      department: dataForm.department,
+      company: dataForm.company,
+    };
+
+    if (selectedUserId) {
+      await dispatch(
+        updateEmployee({ employeeId: selectedUserId, updatedData })
+      );
+    }
+
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 2000);
+
+    return { success: true };
+  };
+
+  const [_, formAction] = useActionState(handleFormAction, { success: false });
 
   if (!selectedUserId) {
     return (
@@ -61,16 +66,18 @@ const InfoUser = () => {
   return (
     <section className={styles["info-user"]}>
       <form
-        ref={formRef}
         className={styles["info-user__form"]}
-        action={formAction}
+        onSubmit={(e) => {
+          e.preventDefault(); // Предотвращаем стандартное поведение формы
+          formAction(); // Вызываем action без аргументов
+        }}
       >
-        <input type="hidden" name="employeeId" value={selectedUserId} />
         <input
           type="text"
           name="name"
           placeholder="ФИО"
-          defaultValue={dataUser?.name || ""}
+          value={dataForm.name}
+          onChange={(e) => setDataForm({ ...dataForm, name: e.target.value })}
           className={styles["info-user__form__input-name"]}
         />
         <div className={styles["info-user__form__profile"]}>
@@ -83,39 +90,41 @@ const InfoUser = () => {
             <ProfileInfoItem
               label="Должность"
               name="jobTitle"
-              dataItem={dataUser?.jobTitle || ""}
+              dataItem={dataForm.jobTitle}
+              // Теперь мы передаем правильный обработчик
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setDataForm({ ...dataForm, jobTitle: e.target.value })
+              }
             />
             <ProfileInfoItem
               label="Отдел"
               name="department"
-              dataItem={dataUser?.department || ""}
+              dataItem={dataForm.department}
+              // Обработчик для "Отдел"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setDataForm({ ...dataForm, department: e.target.value })
+              }
             />
             <ProfileInfoItem
               label="Компания"
               name="company"
-              dataItem={dataUser?.company || ""}
+              dataItem={dataForm.company}
+              // Обработчик для "Компания"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setDataForm({ ...dataForm, company: e.target.value })
+              }
             />
           </div>
         </div>
-        <SubmitButton />
-        {formState?.error && <p className="error">{formState.error}</p>}
-
-        {isSuccessVisible && <p className="success">{formState.success}</p>}
+        <button className={styles["info-user__form__button"]} type="submit">
+          Сохранить
+        </button>
       </form>
-    </section>
-  );
-};
 
-const SubmitButton = () => {
-  const { pending } = useFormStatus();
-  return (
-    <button
-      className={styles["info-user__form__button"]}
-      type="submit"
-      disabled={pending}
-    >
-      {pending ? "Сохранение..." : "Сохранить"}
-    </button>
+      {showSuccess && (
+        <p className={styles["info-user__success-message"]}>Данные обновлены</p>
+      )}
+    </section>
   );
 };
 

@@ -2,7 +2,7 @@
   "employees": [
     {
       "id": "a1b2c3d4e5",
-      "name": "Павел Семенов",
+      "name": "Павел Семено",
       "department": "Частное Охранное Предприятие",
       "company": "Легион",
       "jobTitle": "Руководитель"
@@ -11,14 +11,14 @@
       "id": "f6g7h8i9j0",
       "name": "Ирина Козлова",
       "department": "Разработка ПО",
-      "company": "TechSoftss",
+      "company": "TechSoft",
       "jobTitle": "Frontend-разработчик"
     },
     {
       "id": "k1l2m3n4o5",
       "name": "Александр Иванов",
       "department": "Разработка ПО",
-      "company": "InnovaTech",
+      "company": "InnovaTechs",
       "jobTitle": "Backend-разработчик"
     },
     {
@@ -32,14 +32,14 @@
       "id": "u1v2w3x4y5",
       "name": "Олег Тихонов",
       "department": "HR",
-      "company": "HR Solutions",
+      "company": "HR Solution",
       "jobTitle": "HR-менеджер"
     },
     {
       "id": "z6a7b8c9d0",
       "name": "Марина Петрова",
       "department": "Продажи",
-      "company": "BestSales",
+      "company": "BestSale",
       "jobTitle": "Менеджер по продажам"
     },
     {
@@ -223,6 +223,216 @@
       "department": "Туризм",
       "company": "TravelMore",
       "jobTitle": "Туроператор"
+    },
+    {
+      "id": "zw90b33us0",
+      "name": "Олеся Новикова",
+      "department": "Финансы",
+      "company": "EnergyPower",
+      "jobTitle": "Финансовый аналитик"
+    },
+    {
+      "id": "fztta7rwnn",
+      "name": "Ольга Лебедева",
+      "department": "Продажи",
+      "company": "SalesWorks",
+      "jobTitle": "Туроператор"
+    },
+    {
+      "id": "05nqju828b",
+      "name": "Дмитрий Козлов",
+      "department": "Энергетика",
+      "company": "FinanceCo",
+      "jobTitle": "Финансовый аналитик"
+    },
+    {
+      "id": "oig6jwx73i",
+      "name": "Мария Иванова",
+      "department": "HR",
+      "company": "TechCorp",
+      "jobTitle": "Менеджер"
+    },
+    {
+      "id": "iclwv0xkg8",
+      "name": "Алина Михайлова",
+      "department": "Туризм",
+      "company": "TechCorp",
+      "jobTitle": "Финансовый аналитик"
+    },
+    {
+      "id": "8rl0sgcqv5",
+      "name": "Константин Морозов",
+      "department": "Туризм",
+      "company": "EnergyPower",
+      "jobTitle": "Туроператор"
+    },
+    {
+      "id": "cebddk8bcq",
+      "name": "Сергей Медведев",
+      "department": "HR",
+      "company": "EnergyPower",
+      "jobTitle": "Инженер-энергетик"
+    },
+    {
+      "id": "1yizlr3g35",
+      "name": "Дмитрий Козлов",
+      "department": "Энергетика",
+      "company": "TravelMore",
+      "jobTitle": "Менеджер"
+    },
+    {
+      "id": "pmckr5s21i",
+      "name": "Ярослав Степанов",
+      "department": "Туризм",
+      "company": "SalesWorks",
+      "jobTitle": "Туроператор"
+    },
+    {
+      "id": "d17qr0kfxy",
+      "name": "Ярослав Степанов",
+      "department": "Продажи",
+      "company": "TechCorp",
+      "jobTitle": "Финансовый аналитик"
+    },
+    {
+      "id": "s9f5kd6a3v",
+      "name": "Павел Ковалев",
+      "department": "Туризм",
+      "company": "TechCorp",
+      "jobTitle": "Туроператор"
+    },
+    {
+      "id": "qwauwao7ax",
+      "name": "Григорий Волков",
+      "department": "ИТ",
+      "company": "FinanceCo",
+      "jobTitle": "Менеджер"
+    },
+    {
+      "id": "yibbks7l1q",
+      "name": "Ирина Орлова",
+      "department": "Финансы",
+      "company": "EnergyPower",
+      "jobTitle": "Инженер-энергетик"
+    },
+    {
+      "id": "vp3a1pwm5t",
+      "name": "Станислав Черепанов",
+      "department": "Продажи",
+      "company": "TravelMore",
+      "jobTitle": "Менеджер"
+    },
+    {
+      "id": "wxqembxnqv",
+      "name": "Василиса Яковлева",
+      "department": "Энергетика",
+      "company": "TravelMore",
+      "jobTitle": "Разработчик"
+    },
+    {
+      "id": "u34yexf6tr",
+      "name": "Екатерина Васильева",
+      "department": "Финансы",
+      "company": "TechCorp",
+      "jobTitle": "Разработчик"
+    },
+    {
+      "id": "7vboufbv3n",
+      "name": "Виктория Фомина",
+      "department": "HR",
+      "company": "FinanceCo",
+      "jobTitle": "Инженер-энергетик"
+    },
+    {
+      "id": "ganqblqojn",
+      "name": "Никита Павлов",
+      "department": "Финансы",
+      "company": "EnergyPower",
+      "jobTitle": "Менеджер"
+    },
+    {
+      "id": "ph8oaidiuw",
+      "name": "Тимофей Сидоров",
+      "department": "Финансы",
+      "company": "TravelMore",
+      "jobTitle": "Инженер-энергетик"
+    },
+    {
+      "id": "r7p2h3og0n",
+      "name": "Сергей Медведев",
+      "department": "ИТ",
+      "company": "FinanceCo",
+      "jobTitle": "Менеджер"
+    },
+    {
+      "id": "j64ynw9bjz",
+      "name": "Константин Морозов",
+      "department": "ИТ",
+      "company": "TravelMore",
+      "jobTitle": "Туроператор"
+    },
+    {
+      "id": "qky7bpjrro",
+      "name": "Максим Баранов",
+      "department": "ИТ",
+      "company": "EnergyPower",
+      "jobTitle": "Инженер-энергетик"
+    },
+    {
+      "id": "qbks1bvxwf",
+      "name": "Мария Иванова",
+      "department": "ИТ",
+      "company": "TravelMore",
+      "jobTitle": "Финансовый аналитик"
+    },
+    {
+      "id": "iisosl6jsp",
+      "name": "Екатерина Васильева",
+      "department": "Продажи",
+      "company": "EnergyPower",
+      "jobTitle": "Туроператор"
+    },
+    {
+      "id": "zjsp4azruk",
+      "name": "Алина Михайлова",
+      "department": "Энергетика",
+      "company": "SalesWorks",
+      "jobTitle": "Инженер-энергетик"
+    },
+    {
+      "id": "1c14yqvtls",
+      "name": "Данил Тарасов",
+      "department": "Продажи",
+      "company": "FinanceCo",
+      "jobTitle": "Разработчик"
+    },
+    {
+      "id": "ed19tawhoh",
+      "name": "Константин Морозов",
+      "department": "Туризм",
+      "company": "SalesWorks",
+      "jobTitle": "Туроператор"
+    },
+    {
+      "id": "rmx6jsz6s0",
+      "name": "Тимур Соловьев",
+      "department": "Энергетика",
+      "company": "EnergyPower",
+      "jobTitle": "Разработчик"
+    },
+    {
+      "id": "15n53zqo55",
+      "name": "Василиса Яковлева",
+      "department": "Финансы",
+      "company": "TechCorp",
+      "jobTitle": "Разработчик"
+    },
+    {
+      "id": "6wgp5hlb79",
+      "name": "Татьяна Кузнецова",
+      "department": "Финансы",
+      "company": "SalesWorks",
+      "jobTitle": "Разработчик"
     }
   ]
 }

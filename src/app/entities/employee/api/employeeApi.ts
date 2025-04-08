@@ -1,12 +1,23 @@
 import axios from "axios";
 import Employee from "../../../../shared/types/employees";
 
-const API_URL = "http://localhost:3001/employees";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const employeeApi = {
-  fetchAll: async () => {
-    const { data } = await axios.get<Employee[]>(API_URL);
-    return data;
+  fetchAll: async (page = 1, limit = 40) => {
+    const response = await axios.get<Employee[]>(API_URL, {
+      params: {
+        _page: page,
+        _limit: limit,
+      },
+    });
+
+    const totalCount = parseInt(response.headers["x-total-count"] || "0", 10);
+
+    return {
+      data: response.data,
+      totalCount,
+    };
   },
 
   delete: async (id: string) => {

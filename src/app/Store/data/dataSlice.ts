@@ -9,8 +9,9 @@ import {
 
 const initialState: ICDataSlice = {
   data: [],
-  loading: Status.LOADING,
+  loading: Status.SUCCESS, // ✅ начальное состояние — не loading
   selectedUserId: null,
+  totalCount: 0,
 };
 
 const dataSlice = createSlice({
@@ -25,24 +26,35 @@ const dataSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // Получение сотрудников
     builder.addCase(fetchEmployees.pending, (state) => {
-      state.loading = Status.LOADING;
+      if (state.loading !== Status.LOADING) {
+        state.loading = Status.LOADING;
+      }
     });
+
     builder.addCase(fetchEmployees.fulfilled, (state, action) => {
-      state.data = action.payload;
+      const newData = action.payload.data.filter(
+        (newItem) =>
+          !state.data.some((existingItem) => existingItem.id === newItem.id)
+      );
+      state.data = [...state.data, ...newData];
+
+      if (action.payload.totalCount > 0) {
+        state.totalCount = action.payload.totalCount;
+      }
+
       state.loading = Status.SUCCESS;
+      console.log("✅ fetchEmployees.fulfilled", action.payload);
     });
+
     builder.addCase(fetchEmployees.rejected, (state) => {
       state.loading = Status.ERROR;
     });
 
-    // Удаление сотрудника
     builder.addCase(deleteEmployee.fulfilled, (state, action) => {
       state.data = state.data.filter((emp) => emp.id !== action.payload);
     });
 
-    // Обновление сотрудника
     builder.addCase(updateEmployee.fulfilled, (state, action) => {
       state.data = state.data.map((emp) =>
         emp.id === action.payload.id ? action.payload : emp

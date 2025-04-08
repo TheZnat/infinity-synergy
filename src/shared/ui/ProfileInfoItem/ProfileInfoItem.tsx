@@ -4,22 +4,25 @@ import styles from "./ProfileInfoItem.module.css";
 type ProfileInfoItemProps = {
   dataItem: string | undefined;
   label: string;
-  name: string; // Добавляем name для работы с формой
+  name: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const ProfileInfoItem: React.FC<ProfileInfoItemProps> = ({
   dataItem,
   label,
   name,
+  onChange,
 }) => {
   return (
     <div className={styles["profile-info__item"]}>
       <p className={styles["profile-info__item__text"]}>{label}</p>
       <input
         type="text"
-        name={name} // Добавляем name
-        defaultValue={dataItem} // Используем defaultValue вместо value
+        name={name}
+        value={dataItem}
         className={styles["profile-info__item__input"]}
+        onChange={onChange}
       />
     </div>
   );

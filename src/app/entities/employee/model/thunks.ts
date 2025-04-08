@@ -4,9 +4,12 @@ import Employee from "../../../../shared/types/employees";
 
 export const fetchEmployees = createAsyncThunk(
   "employees/fetchAll",
-  async (_, { rejectWithValue }) => {
+  async (
+    { page, limit }: { page: number; limit: number },
+    { rejectWithValue }
+  ) => {
     try {
-      return await employeeApi.fetchAll();
+      return await employeeApi.fetchAll(page, limit);
     } catch (error: any) {
       return rejectWithValue(error.response?.data || error.message);
     }
