@@ -1,8 +1,8 @@
 import jsonServer from "json-server";
-import path from "path";
-
+import dotenv from "dotenv";
+dotenv.config();
 const server = jsonServer.create();
-const router = jsonServer.router(path.resolve("db.json"));
+const router = jsonServer.router("./db.json");
 const middlewares = jsonServer.defaults();
 
 server.use((req, res, next) => {
@@ -16,4 +16,7 @@ server.use((req, res, next) => {
 server.use(middlewares);
 server.use(router);
 
-export default server;
+const PORT = process.env.PORT;
+server.listen(PORT, () => {
+  console.log(`✅ JSON Server is running on http://localhost:${PORT}`);
+});
