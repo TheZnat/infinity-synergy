@@ -9,7 +9,7 @@ import {
 
 const initialState: ICDataSlice = {
   data: [],
-  loading: Status.SUCCESS, // ✅ начальное состояние — не loading
+  loading: Status.SUCCESS,
   selectedUserId: null,
   totalCount: 0,
 };
@@ -44,7 +44,6 @@ const dataSlice = createSlice({
       }
 
       state.loading = Status.SUCCESS;
-      console.log("✅ fetchEmployees.fulfilled", action.payload);
     });
 
     builder.addCase(fetchEmployees.rejected, (state) => {

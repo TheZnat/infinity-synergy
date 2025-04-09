@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { employeeApi } from "../api/employeeApi";
-import Employee from "../../../../shared/types/employees";
+import { Employee } from "../../../../shared/types";
 
 export const fetchEmployees = createAsyncThunk(
   "employees/fetchAll",

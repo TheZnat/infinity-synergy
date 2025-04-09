@@ -1,6 +1,5 @@
 import styles from "./HomePage.module.css";
-import ListUsers from "../../widgets/ListUsers/ListUsers";
-import InfoUser from "../../widgets/InfoUser/InfoUser";
+import { InfoUser, ListUsers } from "../../widgets";
 
 const HomePage = () => {
   return (

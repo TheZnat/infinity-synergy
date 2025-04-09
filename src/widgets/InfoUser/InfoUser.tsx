@@ -2,7 +2,7 @@ import styles from "./InfoUser.module.css";
 import DefaultAvatar from "../../shared/assets/profile-icon.svg";
 import { AppDispatch, RootState } from "../../app/Store/store";
 import { useDispatch, useSelector } from "react-redux";
-import ProfileInfoItem from "../../shared/ui/ProfileInfoItem/ProfileInfoItem";
+import { Input } from "../../Feature";
 import { useEffect, useState } from "react";
 import { updateEmployee } from "../../app/entities/employee/model/thunks";
 import { useActionState } from "react";
@@ -34,7 +34,6 @@ const InfoUser = () => {
     }
   }, [JSON.stringify(dataUser)]);
 
-  // Исправляем handleFormAction (удаляем unused state)
   const handleFormAction = async () => {
     const updatedData = {
       name: dataForm.name,
@@ -68,8 +67,8 @@ const InfoUser = () => {
       <form
         className={styles["info-user__form"]}
         onSubmit={(e) => {
-          e.preventDefault(); // Предотвращаем стандартное поведение формы
-          formAction(); // Вызываем action без аргументов
+          e.preventDefault();
+          formAction();
         }}
       >
         <input
@@ -87,29 +86,26 @@ const InfoUser = () => {
             src={DefaultAvatar}
           />
           <div className={styles["info-user__form__profile__info"]}>
-            <ProfileInfoItem
+            <Input
               label="Должность"
               name="jobTitle"
               dataItem={dataForm.jobTitle}
-              // Теперь мы передаем правильный обработчик
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setDataForm({ ...dataForm, jobTitle: e.target.value })
               }
             />
-            <ProfileInfoItem
+            <Input
               label="Отдел"
               name="department"
               dataItem={dataForm.department}
-              // Обработчик для "Отдел"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setDataForm({ ...dataForm, department: e.target.value })
               }
             />
-            <ProfileInfoItem
+            <Input
               label="Компания"
               name="company"
               dataItem={dataForm.company}
-              // Обработчик для "Компания"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setDataForm({ ...dataForm, company: e.target.value })
               }

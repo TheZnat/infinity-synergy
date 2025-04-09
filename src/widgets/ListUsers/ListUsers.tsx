@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import styles from "./ListUsers.module.css";
-import UsersItem from "../../shared/ui/UsersItem/UsersItem";
+import { UsersItem } from "../../shared/ui";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/Store/store";
 import { fetchEmployees } from "../../app/entities/employee/model/thunks";
